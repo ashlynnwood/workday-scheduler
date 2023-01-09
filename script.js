@@ -21,10 +21,10 @@ $(function () {
     // Get the hour timeblock for input
     var hour = $(this).parent().attr('id');
     
-
+    // Save in local storage
     var userWork = localStorage.setItem(workInput, hour);
   
-  })
+  });
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -32,6 +32,24 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   
+  function colorTime() {
+    var currentHour = dayjs().hour();
+    $('.time-block').each(function() {
+      var timeBlock = parseInt($(this).attr('id'));
+
+      if (currentHour > timeBlock) {
+        $(this).addClass('past').removeClass('present future');
+      
+      } else if (currentHour < timeBlock) {
+        $(this).addClass('future').removeClass('present past');
+      
+      } else {
+        $(this).addClass('present').removeClass('past future');
+      }
+    });
+  
+  }
+  colorTime();
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id

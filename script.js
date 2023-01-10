@@ -20,7 +20,7 @@ $(function () {
     var hour = $(this).parent().attr('id');
     
     // Save in local storage
-    var userWork = localStorage.setItem(workInput, hour);
+    localStorage.setItem(hour, JSON.stringify(workInput));
   
   });
 

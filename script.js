@@ -52,11 +52,14 @@ $(function () {
     var storedHour = $(this).attr('data-hour');
     var savedCode = localStorage.getItem(storedHour); 
     $(this).text(JSON.parse(savedCode));
+
+    // Log the tasks for the workday on console
+  console.log('At ' + storedHour + ': ' + savedCode);
   })
 
   
  
   // Display the current date in the header of the page.
   var today = dayjs();
-  $('#currentDay').text(today.format('dddd, MMMM D[th]'))
+  $('#currentDay').text(today.format('dddd, MMMM Do'))
 });
